@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        button{
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <button>按钮四</button>
+    <button>按钮五</button>
+        </div>
+</body>
+<script>
+    var btn=document.querySelectorAll('button')
+  for(let i=0;i<btn.length;i++){
+      btn[i].onclick=function (){
+        for (let i=0;i<btn.length;i++){
+            btn[i].style.backgroundColor=''
+        }
+        btn[i].style.backgroundColor='pink'
+        console.log(11)
+    }}
+</script>
+</html>

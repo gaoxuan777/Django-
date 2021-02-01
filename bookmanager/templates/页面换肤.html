@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <style>
+           * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(image1.jpg) no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .baidu {
+            overflow: hidden;
+            margin: 100px auto;
+            background-color: #fff;
+            width: 410px;
+            padding-top: 3px;
+        }
+
+        .baidu li {
+            float: left;
+            margin: 0 1px;
+            cursor: pointer;
+        }
+
+        .baidu img {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+      <ul class="baidu">
+        <li><img src="image1.jpg"></li>
+        <li><img src="image2.jpg"></li>
+        <li><img src="image3.jpg"></li>
+        <li><img src="image4.jpg"></li>
+    </ul>
+</body>
+<script>
+    var pic=document.querySelector('.baidu').querySelectorAll('img')
+    for (var i=0;i<pic.length;i++) {
+        pic[i].addEventListener('click', function (){
+            document.body.style.backgroundImage='url('+this.src+')'
+        })
+    }
+</script>
+</html>
