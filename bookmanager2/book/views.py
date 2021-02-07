@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+import json
 # Create your views here.
-# from book.models import BookInfo
+from book.models import BookInfo
+from book.models import PeopleInfo
+# BookInfo.objects.filter(peopleinfo__id__='1')
 # BookInfo(
 #     name='Django',
 #     pub_date='2020-1-2',
@@ -30,8 +32,32 @@ from django.shortcuts import render
 # # 查询图书，要求图书人物为"郭靖"
 # # 查询图书，要求图书中人物的描述包含"八"
 # BookInfo.objects.filter(peopleinfo__description__contains='八')
-def shop(request,city_id,res_id):
-    query=request.GET
-    try1=query.getlist('or')
-    print(try1)
-    return HttpResponse('高旭桉好帅')
+
+
+def cookie(request):
+    cookie_name=request.GET.get('username')
+    psd=request.GET.get('password')
+    set_cookie=HttpResponse('123')
+    set_cookie.set_cookie('name',cookie_name,max_age=3600)
+    set_cookie.set_cookie('password',psd)
+
+    return set_cookie
+
+def get_cookie(request):
+    return HttpResponse('高旭桉')
+def register(request):
+    #前端form表单发送post请求给后端传递前端数据，后端通过request.Post拿到数据 是字典形式的数据
+    data=request.POST
+    print(data)
+    return HttpResponse('1233')
+def json_name(request):
+    #前端发送json数据给后台，后台通过request.body拿到json数据 是byte类型 需要利用decode()转化为json数据形式 ，再利用(先 import json）json.load可以转化为字典形式
+    data=request.body
+    data2=json.loads(data.decode())
+    #通过request.META可以拿到请求头的信息  字典形式
+    print(request.META)
+
+    return HttpResponse('json')
+def shop(request,city_id):
+    return HttpResponse('12')
+
