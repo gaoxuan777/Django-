@@ -44,6 +44,8 @@ def cookie(request):
     return set_cookie
 
 def get_cookie(request):
+    avc=request.COOKIES.get('name')
+    print(avc)
     return HttpResponse('高旭桉')
 def register(request):
     #前端form表单发送post请求给后端传递前端数据，后端通过request.Post拿到数据 是字典形式的数据
@@ -60,4 +62,28 @@ def json_name(request):
     return HttpResponse('json')
 def shop(request,city_id):
     return HttpResponse('12')
+def set_session(request):
+    username=request.GET.get('username')
+    user_id=1
+    request.session['id_name']=user_id
+    request.session['id_username']=username
+    return HttpResponse('session')
+def get_session(request):
+    a=request.session.get('id_name')
+    b = request.session.get('id_username')
+    content='{},{}'.format(a,b)
+    return HttpResponse(content)
+from django.views import View
+class login(View):
+    def get(self,request):
+        return HttpResponse('get')
+    def post(self,request):
+        return HttpResponse('post')
+from django.contrib.auth.mixins import LoginRequiredMixin
+class OrderView(LoginRequiredMixin,View):
+    def get(self,request):
+        return HttpResponse('get')
+    def post(self,request):
+        return HttpResponse('post')
+
 
